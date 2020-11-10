@@ -1,13 +1,33 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public abstract class Box {
-    public abstract void add(Item item);
+public class Box implements Packable {
+    private Double capacity;
+    private List<Packable> items;
 
-    public void add(ArrayList<Item> items) {
-        for (Item item : items) {
-            Box.this.add(item);
-        }
+    public Box(Double capacity) {
+        this.capacity = capacity;
+        this.items = new ArrayList<>();
     }
 
-    public abstract boolean isInBox(Item item);
+    public void add(Packable item) {
+        if (this.weight() + item.weight() > capacity) {
+            return;
+        }
+        this.items.add(item);
+    }
+
+    @Override
+    public double weight() {
+        double sum = 0.0;
+        for (Packable item : items) {
+            sum += item.weight();
+        }
+        return sum;
+    }
+
+    @Override
+    public String toString() {
+        return "Box: " + this.items.size() + " items, total weight " + this.weight() + "kg";
+    }
 }
