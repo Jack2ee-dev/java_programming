@@ -5,19 +5,19 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
 	public static void main(String[] args) {
-		Warehouse2 warehouse = new Warehouse2();
-		warehouse.addProduct("coffee", 5, 10);
-		warehouse.addProduct("milk", 3, 20);
-		warehouse.addProduct("cream", 2, 55);
-		warehouse.addProduct("bread", 7, 8);
+		Card first = new Card(2, Suit.DIAMOND);
+		Card second = new Card(14, Suit.SPADE);
+		Card third = new Card(12, Suit.HEART);
 
-		Scanner scanner = new Scanner(System.in);
-
-		Store store = new Store(warehouse, scanner);
-		store.shop("John");
+		System.out.println(first);
+		System.out.println(second);
+		System.out.println(third);
 	}
 }
